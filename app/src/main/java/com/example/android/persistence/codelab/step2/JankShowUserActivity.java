@@ -68,7 +68,7 @@ public class JankShowUserActivity extends AppCompatActivity {
     }
 
     private void populateDb() {
-        DatabaseInitializer.populateSync(mDb);
+        DatabaseInitializer.populateAsync(mDb);
     }
 
     private void fetchData() {
