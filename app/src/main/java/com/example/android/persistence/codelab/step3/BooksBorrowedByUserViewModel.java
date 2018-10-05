@@ -26,7 +26,10 @@ import com.example.android.persistence.codelab.db.utils.DatabaseInitializer;
 
 import java.util.List;
 
-
+/**
+ * The BooksBorrowedByUserViewModel class exposes the list of books wrapped in a LiveData object,
+ * and is also responsible for creating and populating the database
+ */
 public class BooksBorrowedByUserViewModel extends AndroidViewModel {
 
     public final LiveData<List<Book>> books;
@@ -37,8 +40,8 @@ public class BooksBorrowedByUserViewModel extends AndroidViewModel {
         super(application);
         createDb();
 
-        // TODO: Assign books to the 'findBooksBorrowedByName' query.
-        books = null;
+//        retrieve the LiveData object from the DAO and use it to subscribe to changes using the name field
+        books = mDb.bookModel().findBooksBorrowedByName("Mike");
     }
 
     public void createDb() {
