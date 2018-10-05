@@ -60,28 +60,13 @@ public class UsersActivity extends AppCompatActivity {
         DatabaseInitializer.populateSync(mDb);
     }
 
-//    private void fetchData() {
-//        // Note: this kind of logic should not be in an activity.
-//        StringBuilder sb = new StringBuilder();
-//        List<User> youngUsers = mDb.userModel().findUsersYoungerThan(35);
-//        for (User youngUser : youngUsers) {
-//            sb.append(String.format(Locale.US,
-//                    "%s, %s (%d)\n", youngUser.lastName, youngUser.name, youngUser.age));
-//        }
-//        mYoungUsersTextView.setText(sb);
-//    }
-
     private void fetchData() {
         // Note: this kind of logic should not be in an activity.
         StringBuilder sb = new StringBuilder();
-        List<User> alvins = mDb.userModel().findAlvin();
-        if(alvins.size() == 0) {
-            mYoungUsersTextView.setText("No alvins found!");
-            return;
-        }
-        for (User alvin : alvins) {
+        List<User> youngUsers = mDb.userModel().findUsersYoungerThan(35);
+        for (User youngUser : youngUsers) {
             sb.append(String.format(Locale.US,
-                    "%s, %s (%d)\n", alvin.lastName, alvin.name, alvin.age));
+                    "%s, %s (%d)\n", youngUser.lastName, youngUser.name, youngUser.age));
         }
         mYoungUsersTextView.setText(sb);
     }
