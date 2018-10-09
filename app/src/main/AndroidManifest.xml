@@ -43,12 +43,12 @@
         <activity android:name="com.example.android.persistence.codelab.step2.JankShowUserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name="com.example.android.persistence.codelab.step3.BooksBorrowedByUserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name="com.example.android.persistence.codelab.step3_solution.BooksBorrowedByUserActivity">
