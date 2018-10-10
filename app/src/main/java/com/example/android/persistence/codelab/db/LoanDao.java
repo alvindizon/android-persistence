@@ -47,6 +47,20 @@ public interface LoanDao {
     )
     LiveData<List<LoanWithUserAndBook>> findLoansByNameAfter(String userName, Date after);
 
+    /**
+     *  Returns LiveData for Books loaned by a user after a specific date
+     * @param username Username
+     * @param after Loan date used as reference
+     * @return Returns LiveData for Books loaned by a user after a specific date
+     */
+    @Query("SELECT Loan.id, Book.title, User.name, Loan.startTime, Loan.endTime From Loan " +
+            "INNER JOIN Book ON Loan.book_id = Book.id " +
+            "INNER JOIN User ON Loan.user_id = User.id " +
+            "WHERE User.name LIKE :username " +
+            "AND Loan.endTime > :after"
+    )
+    LiveData<List<LoanWithUserAndBook>> findBooksBorrowedByUserAfter(String username, Date after);
+
     @Insert()
     void insertLoan(Loan loan);
 
