@@ -85,6 +85,14 @@ public interface BookDao {
     )
     List<Book> findBooksBorrowedByUserSync(String userId);
 
+    @Query("SELECT * FROM Book " +
+            "INNER JOIN Loan ON Loan.book_id = Book.id " +
+            "INNER JOIN User ON User.id = Loan.user_id " +
+            "WHERE User.name LIKE :userName " +
+            "AND Loan.endTime > :after "
+    )
+    LiveData<List<Book>> findBorrowedByNameAfter(String userName, Date after);
+
     @Query("SELECT * FROM Book")
     LiveData<List<Book>> findAllBooks();
 
