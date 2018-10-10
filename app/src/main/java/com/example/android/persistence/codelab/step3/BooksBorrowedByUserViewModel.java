@@ -41,7 +41,7 @@ public class BooksBorrowedByUserViewModel extends AndroidViewModel {
         createDb();
 
 //        retrieve the LiveData object from the DAO and use it to subscribe to changes using the name field
-        books = mDb.bookModel().findBooksBorrowedByName("Mike");
+        books = mDb.bookModel().findBooksBorrowedByNameObs("Mike");
     }
 
     public void createDb() {
